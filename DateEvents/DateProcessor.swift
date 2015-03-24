@@ -13,7 +13,7 @@ import Darwin
 class DateProcessor
 {
     // returns a formatted date by passing in a percentage
-    func getDateFromPercentage( percentage : Double ) -> String
+    func getDateFromPercentage( percentage : Float ) -> String
     {
         let calendar : NSCalendar! = NSCalendar(identifier: NSGregorianCalendar)
         let currentDate = NSDate()
@@ -21,9 +21,9 @@ class DateProcessor
         let currentDateComponents : NSDateComponents = calendar.components(flags, fromDate: currentDate)
         
         // find years, days to subtract from given percentage
-        var yearsToSubtract : Double = exp( (20.3444 * pow( 1 - percentage, 3 )) + 3 ) - exp(3)
+        var yearsToSubtract : Float = exp( (20.3444 * pow( 1 - percentage, 3 )) + 3 ) - exp(3)
         var subtractingYear = Int(yearsToSubtract)
-        var subtractingDay = Int( 365 * ( yearsToSubtract - Double(subtractingYear) ) )
+        var subtractingDay = Int( 365 * ( yearsToSubtract - Float(subtractingYear) ) )
         
         // subtract years and days!
         let intermediateDateComponents = NSDateComponents()

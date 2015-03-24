@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -18,78 +19,182 @@
                         <subviews>
                             <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="SZ1-D2-3Gh">
                                 <rect key="frame" x="241" y="81" width="118" height="31"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="33" y="138" width="334" height="31"/>
-                                </variation>
                                 <connections>
                                     <action selector="dateSliderReleased:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uR7-16-ToN"/>
                                     <action selector="dateSliderValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="pQB-Qk-Mkn"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a date on the slider to view events on that date!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoB-t1-5II">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="74" y="176" width="253" height="56"/>
-                                </variation>
-                            </label>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbw-Ox-MIP">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="em2-qB-gI9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="em2-qB-gI9">
                                         <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="326" id="jem-cH-IwS"/>
+                                            <constraint firstAttribute="height" constant="263" id="uae-gP-iaf"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="21" y="19" width="326" height="263"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="jem-cH-IwS"/>
+                                                <exclude reference="uae-gP-iaf"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="widthClass=compact">
+                                            <mask key="constraints">
+                                                <include reference="jem-cH-IwS"/>
+                                                <include reference="uae-gP-iaf"/>
+                                            </mask>
                                         </variation>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="em2-qB-gI9" secondAttribute="trailing" constant="21" id="2Qu-jN-66D"/>
+                                    <constraint firstItem="em2-qB-gI9" firstAttribute="top" secondItem="Pbw-Ox-MIP" secondAttribute="top" constant="19" id="4Bj-WL-J4i"/>
+                                    <constraint firstItem="em2-qB-gI9" firstAttribute="top" secondItem="Pbw-Ox-MIP" secondAttribute="top" constant="19" id="Hsw-iY-Q5z"/>
+                                    <constraint firstItem="em2-qB-gI9" firstAttribute="leading" secondItem="Pbw-Ox-MIP" secondAttribute="leading" constant="21" id="Rmk-Yq-doi"/>
+                                    <constraint firstItem="em2-qB-gI9" firstAttribute="centerX" secondItem="Pbw-Ox-MIP" secondAttribute="centerX" id="l2M-o3-ivy"/>
+                                    <constraint firstAttribute="bottom" secondItem="em2-qB-gI9" secondAttribute="bottom" constant="20" id="mhV-cw-kcP"/>
+                                    <constraint firstItem="em2-qB-gI9" firstAttribute="top" secondItem="Pbw-Ox-MIP" secondAttribute="top" constant="19" id="tlv-Qk-7xx"/>
+                                    <constraint firstAttribute="bottom" secondItem="em2-qB-gI9" secondAttribute="bottom" constant="20" id="ypz-T0-ed2"/>
+                                </constraints>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="em2-qB-gI9"/>
                                     </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="2Qu-jN-66D"/>
+                                        <exclude reference="4Bj-WL-J4i"/>
+                                        <exclude reference="Hsw-iY-Q5z"/>
+                                        <exclude reference="Rmk-Yq-doi"/>
+                                        <exclude reference="l2M-o3-ivy"/>
+                                        <exclude reference="mhV-cw-kcP"/>
+                                        <exclude reference="tlv-Qk-7xx"/>
+                                        <exclude reference="ypz-T0-ed2"/>
+                                    </mask>
                                 </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="272" width="368" height="302"/>
+                                <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="em2-qB-gI9"/>
                                     </mask>
+                                    <mask key="constraints">
+                                        <include reference="2Qu-jN-66D"/>
+                                        <include reference="4Bj-WL-J4i"/>
+                                        <include reference="Hsw-iY-Q5z"/>
+                                        <include reference="Rmk-Yq-doi"/>
+                                        <include reference="l2M-o3-ivy"/>
+                                        <include reference="mhV-cw-kcP"/>
+                                        <include reference="tlv-Qk-7xx"/>
+                                        <include reference="ypz-T0-ed2"/>
+                                    </mask>
                                 </variation>
                             </scrollView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="seg-Tu-o5c">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="Date" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VYb-u9-qdC">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <action selector="dateTextFieldEdited:" destination="vXZ-lx-hvc" eventType="editingDidEnd" id="zso-0X-lgM"/>
+                                    <action selector="dateTextFieldValueChanged:" destination="vXZ-lx-hvc" eventType="valueChanged" id="SKy-Qi-RvI"/>
+                                    <action selector="dateTextFieldValueDidChange:" destination="vXZ-lx-hvc" eventType="valueChanged" id="T9Z-YS-bs9"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="2rt-q9-DRS"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a date on the slider to view events on that date!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoB-t1-5II">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="244" id="fp5-ky-G0C"/>
+                                    <constraint firstAttribute="height" constant="56" id="gEv-tR-W8Q"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="35" y="66" width="330" height="52"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fp5-ky-G0C"/>
+                                        <exclude reference="gEv-tR-W8Q"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="fp5-ky-G0C"/>
+                                        <include reference="gEv-tR-W8Q"/>
+                                    </mask>
                                 </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SZ1-D2-3Gh" firstAttribute="centerX" secondItem="Pbw-Ox-MIP" secondAttribute="centerX" id="4BX-co-er2"/>
+                            <constraint firstItem="VYb-u9-qdC" firstAttribute="centerX" secondItem="SZ1-D2-3Gh" secondAttribute="centerX" id="AaR-eS-d8i"/>
+                            <constraint firstItem="HoB-t1-5II" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="62" id="Dzi-Mu-xU0"/>
+                            <constraint firstItem="SZ1-D2-3Gh" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="19" id="G2n-UZ-pI6"/>
+                            <constraint firstItem="VYb-u9-qdC" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="52" id="TwM-Vb-7u0"/>
+                            <constraint firstItem="SZ1-D2-3Gh" firstAttribute="top" secondItem="VYb-u9-qdC" secondAttribute="bottom" constant="8" symbolic="YES" id="UHz-AR-vId"/>
+                            <constraint firstItem="Pbw-Ox-MIP" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="272" id="WsG-4l-DTk"/>
+                            <constraint firstItem="SZ1-D2-3Gh" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="nUX-kU-gWv"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Pbw-Ox-MIP" secondAttribute="bottom" constant="26" id="qKy-to-qwf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HoB-t1-5II" secondAttribute="trailing" constant="62" id="sMq-c5-g7R"/>
+                            <constraint firstItem="SZ1-D2-3Gh" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="138" id="shz-1V-2nX">
+                                <variation key="widthClass=compact" constant="120"/>
+                            </constraint>
+                            <constraint firstItem="HoB-t1-5II" firstAttribute="top" secondItem="SZ1-D2-3Gh" secondAttribute="bottom" constant="8" id="tDv-zX-I9f"/>
+                            <constraint firstItem="Pbw-Ox-MIP" firstAttribute="top" secondItem="HoB-t1-5II" secondAttribute="bottom" constant="58" id="uSr-jb-aG7"/>
+                            <constraint firstItem="VYb-u9-qdC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="vgk-0k-5SY"/>
+                        </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="HoB-t1-5II"/>
                                 <exclude reference="Pbw-Ox-MIP"/>
-                                <exclude reference="seg-Tu-o5c"/>
+                                <exclude reference="VYb-u9-qdC"/>
+                                <exclude reference="HoB-t1-5II"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="AaR-eS-d8i"/>
+                                <exclude reference="TwM-Vb-7u0"/>
+                                <exclude reference="vgk-0k-5SY"/>
+                                <exclude reference="4BX-co-er2"/>
+                                <exclude reference="G2n-UZ-pI6"/>
+                                <exclude reference="UHz-AR-vId"/>
+                                <exclude reference="nUX-kU-gWv"/>
+                                <exclude reference="shz-1V-2nX"/>
+                                <exclude reference="Dzi-Mu-xU0"/>
+                                <exclude reference="sMq-c5-g7R"/>
+                                <exclude reference="tDv-zX-I9f"/>
+                                <exclude reference="WsG-4l-DTk"/>
+                                <exclude reference="uSr-jb-aG7"/>
+                                <exclude reference="qKy-to-qwf"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="HoB-t1-5II"/>
                                 <include reference="Pbw-Ox-MIP"/>
-                                <include reference="seg-Tu-o5c"/>
+                                <include reference="VYb-u9-qdC"/>
+                                <include reference="HoB-t1-5II"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="AaR-eS-d8i"/>
+                                <include reference="TwM-Vb-7u0"/>
+                                <include reference="vgk-0k-5SY"/>
+                                <include reference="4BX-co-er2"/>
+                                <include reference="G2n-UZ-pI6"/>
+                                <include reference="UHz-AR-vId"/>
+                                <include reference="nUX-kU-gWv"/>
+                                <include reference="shz-1V-2nX"/>
+                                <include reference="Dzi-Mu-xU0"/>
+                                <include reference="sMq-c5-g7R"/>
+                                <include reference="tDv-zX-I9f"/>
+                                <include reference="WsG-4l-DTk"/>
+                                <include reference="uSr-jb-aG7"/>
+                                <include reference="qKy-to-qwf"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="dateSlider" destination="SZ1-D2-3Gh" id="vp0-yG-ryn"/>
                         <outlet property="eventsLabel" destination="em2-qB-gI9" id="MQo-Pz-k6j"/>
-                        <outlet property="selectedDateLabel" destination="seg-Tu-o5c" id="XYe-Mr-fMP"/>
+                        <outlet property="selectedDateTextField" destination="VYb-u9-qdC" id="tQO-KU-vuZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
