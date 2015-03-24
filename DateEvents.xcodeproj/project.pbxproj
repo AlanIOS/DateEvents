@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C960D9541AC0B77A004C7EEC /* DateProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C960D9531AC0B77A004C7EEC /* DateProcessor.swift */; };
 		E7104D6C1AC0B1EE00B9CD5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7104D6B1AC0B1EE00B9CD5B /* AppDelegate.swift */; };
 		E7104D6E1AC0B1EE00B9CD5B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7104D6D1AC0B1EE00B9CD5B /* ViewController.swift */; };
 		E7104D711AC0B1EE00B9CD5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7104D6F1AC0B1EE00B9CD5B /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C960D9531AC0B77A004C7EEC /* DateProcessor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateProcessor.swift; sourceTree = "<group>"; };
 		E7104D661AC0B1EE00B9CD5B /* DateEvents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DateEvents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7104D6A1AC0B1EE00B9CD5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7104D6B1AC0B1EE00B9CD5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				E7104D6B1AC0B1EE00B9CD5B /* AppDelegate.swift */,
+				C960D9531AC0B77A004C7EEC /* DateProcessor.swift */,
 				E7104D6D1AC0B1EE00B9CD5B /* ViewController.swift */,
 				E7104D6F1AC0B1EE00B9CD5B /* Main.storyboard */,
 				E7104D721AC0B1EE00B9CD5B /* Images.xcassets */,
@@ -212,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C960D9541AC0B77A004C7EEC /* DateProcessor.swift in Sources */,
 				E7104D6E1AC0B1EE00B9CD5B /* ViewController.swift in Sources */,
 				E7104D6C1AC0B1EE00B9CD5B /* AppDelegate.swift in Sources */,
 			);
@@ -405,6 +409,7 @@
 				E7104D871AC0B1EF00B9CD5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7104D881AC0B1EF00B9CD5B /* Build configuration list for PBXNativeTarget "DateEventsTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +418,7 @@
 				E7104D8A1AC0B1EF00B9CD5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
