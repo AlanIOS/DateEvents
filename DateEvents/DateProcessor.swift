@@ -12,6 +12,7 @@ import Darwin
 
 class DateProcessor
 {
+    // returns a formatted date by passing in a percentage
     func getDateFromPercentage( percentage : Double ) -> String
     {
         let calendar : NSCalendar! = NSCalendar(identifier: NSGregorianCalendar)
@@ -27,26 +28,49 @@ class DateProcessor
         // subtract years and days!
         let intermediateDateComponents = NSDateComponents()
         var finalYear = currentDateComponents.year - subtractingYear
-        intermediateDateComponents.day = currentDateComponents.day - subtractingDay
+        intermediateDateComponents.year = finalYear
+        intermediateDateComponents.day = subtractingDay
         
         // get final components
-        var finalDate : NSDate! = NSCalendar().dateByAddingComponents(intermediateDateComponents, toDate: currentDate, options: nil)
+        var finalDate : NSDate! = calendar.dateByAddingComponents(intermediateDateComponents, toDate: currentDate, options: nil)
         let finalDateComponents : NSDateComponents = calendar.components(flags, fromDate: finalDate)
+        let finalMonth = getMonthString(finalDateComponents.month)
         
-        // build a date from calculated years
-        //var dateToSubtract : NSDate = (calendar?.dateFromComponents(finalDateComponents))!
-
-        // subtract calculated date from today
-        //let newDate : NSDate = (calendar?.dateByAddingComponents(components, toDate: currentDate, options: nil))!
-        
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
-        formatter.timeStyle = .NoStyle
-        
-        //return formatter.string
-        return "\(finalYear) \(finalDateComponents.month) \(finalDateComponents.day)"
+        // return properly formatted string for searching through events
+        return "\(finalYear) \(finalMonth) \(finalDateComponents.day)"
     }
     
-    // use nsdateformatter to format date for searching array
-    
+    // returns a month's name as a string from its number representation
+    func getMonthString(month : Int) -> String
+    {
+        switch month
+        {
+        case 1:
+            return "January"
+        case 2:
+            return "February"
+        case 3:
+            return "March"
+        case 4:
+            return "April"
+        case 5:
+            return "May"
+        case 6:
+            return "June"
+        case 7:
+            return "July"
+        case 8:
+            return "August"
+        case 9:
+            return "September"
+        case 10:
+            return "October"
+        case 11:
+            return "November"
+        case 12:
+            return "December"
+        default:
+            return "ERROR PARSING MONTH"
+        }
+    }
 };

@@ -10,11 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var eventsLabel: UILabel!
+    @IBOutlet weak var selectedDateLabel: UILabel!
+    @IBOutlet weak var dateSlider: UISlider!
+    
     var parsedArray : [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // set date label for current date
+        var monthString = DateProcessor().getDateFromPercentage(1)
+        selectedDateLabel.text = monthString
         
         GetWikiData()
     }
@@ -22,6 +30,23 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func dateSliderValueChanged(sender: AnyObject)
+    {
+        let p : Double! = sender.value
+        var monthString = DateProcessor().getDateFromPercentage(p)
+        selectedDateLabel.text = monthString
+    }
+    
+    @IBAction func dateSliderReleased(sender: AnyObject)
+    {
+        let p : Double! = sender.value
+        var monthString = DateProcessor().getDateFromPercentage(p)
+        selectedDateLabel.text = monthString
+        
+        let events = findEventByDate(monthString)
+        eventsLabel.text = events
     }
 
     private func GetWikiData()
@@ -72,7 +97,7 @@ class ViewController: UIViewController {
     
     private func findEventByDate(date : String) -> String?
     {
-        if parsedArray != nil
+        if parsedArray == nil
         {
             return nil
         }
