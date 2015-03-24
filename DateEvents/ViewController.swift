@@ -8,13 +8,22 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var eventsLabel: UILabel!
+    @IBOutlet weak var dateSlider: UISlider!
+    @IBOutlet weak var selectedDateTextField: UITextField!
+    
     var parsedArray : [String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // set date label for current date
+        var monthString = DateProcessor().getDateFromPercentage(1)
+        selectedDateTextField.text = monthString
+        eventsLabel.text = ""
         
         GetWikiData()
     }
@@ -22,6 +31,40 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func dateSliderValueChanged(sender: AnyObject)
+    {
+        //let p : Double! = sender.value
+        var monthString = DateProcessor().getDateFromPercentage(sender.value)
+        selectedDateTextField.text = monthString
+    }
+    
+    @IBAction func dateSliderReleased(sender: AnyObject)
+    {
+        //let p : Double! = sender.value
+        var monthString = DateProcessor().getDateFromPercentage(sender.value)
+        selectedDateTextField.text = monthString
+        
+        let events = findEventByDate(monthString)
+        eventsLabel.text = events
+    }
+    
+    @IBAction func dateTextFieldEdited(sender: AnyObject)
+    {
+        var monthString = selectedDateTextField.text
+        let events = findEventByDate(monthString)
+        eventsLabel.text = events
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool
+    {
+        var monthString = selectedDateTextField.text
+        let events = findEventByDate(monthString)
+        eventsLabel.text = events
+        
+        selectedDateTextField.resignFirstResponder()
+        return true
     }
 
     private func GetWikiData()
@@ -37,8 +80,8 @@ class ViewController: UIViewController {
         var jsonResult: NSDictionary = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSDictionary
         
         let extract = jsonResult.valueForKeyPath("query.pages.48630.extract") as String
-        let startOfEventsIndex = extract.rangeOfString("== §Events ==")
-        let endOfEventsIndex = extract.rangeOfString("== §Births ==")
+        let startOfEventsIndex = extract.rangeOfString("== Events ==")
+        let endOfEventsIndex = extract.rangeOfString("== Births ==")
         //var cleanExtract = extract.stringByReplacingOccurrencesOfString("<li>", withString: "")
         //cleanExtract = extract.stringByReplacingOccurrencesOfString("</li>", withString: "")
         
@@ -61,7 +104,7 @@ class ViewController: UIViewController {
         var cleanedArray : [String] = []
         for line in eventArray
         {
-            if (line.rangeOfString("§") == nil )
+            if (line.rangeOfString("===") == nil )
             {
                 let eventWithYear = "2014 " + line
                 cleanedArray.append(eventWithYear);
@@ -72,7 +115,7 @@ class ViewController: UIViewController {
     
     private func findEventByDate(date : String) -> String?
     {
-        if parsedArray != nil
+        if parsedArray == nil
         {
             return nil
         }
